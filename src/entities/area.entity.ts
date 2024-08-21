@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Departamento } from './departamento.entity';
 
 @Entity('area')
 export class Area {
@@ -10,4 +11,7 @@ export class Area {
 
   @Column()
   img: string;
+
+  @ManyToOne(() => Departamento, (departamento) => departamento.areas)
+  departamento: Departamento;
 }

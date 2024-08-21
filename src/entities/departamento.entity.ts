@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Professor } from './professor.entity';
+import { Area } from './area.entity';
 
 @Entity('departamento')
 export class Departamento {
@@ -29,4 +30,6 @@ export class Departamento {
   @JoinColumn({ name: 'diretor_departamento' })
   diretor_departamento: Professor;
 
+  @OneToMany(() => Area, (area) => area.departamento)
+  areas: Area[];
 }
