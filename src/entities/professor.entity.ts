@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Departamento } from './departamento.entity';
 
 @Entity('professor')
 export class Professor {
@@ -13,4 +14,7 @@ export class Professor {
 
   @Column()
   img: string;
+
+  @ManyToOne(() => Departamento, (departamento) => departamento.professores)
+  departamento: Departamento;
 }
