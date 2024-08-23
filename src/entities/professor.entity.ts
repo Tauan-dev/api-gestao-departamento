@@ -1,5 +1,14 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryColumn,
+} from 'typeorm';
 import { Departamento } from './departamento.entity';
+import { Area } from './area.entity';
+import { Turma } from './turma.entity';
 
 @Entity('professor')
 export class Professor {
@@ -17,4 +26,11 @@ export class Professor {
 
   @ManyToOne(() => Departamento, (departamento) => departamento.professores)
   departamento: Departamento;
+
+  @ManyToOne(() => Area, (area) => area.professores)
+  area: Area;
+
+  @JoinTable()
+  @ManyToMany(() => Turma, (turma) => turma.professores)
+  turmas: Turma;
 }

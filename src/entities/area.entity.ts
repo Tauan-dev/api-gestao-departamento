@@ -1,5 +1,15 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryColumn,
+} from 'typeorm';
 import { Departamento } from './departamento.entity';
+import { Professor } from './professor.entity';
+import { Disciplina } from './disciplina.entity';
 
 @Entity('area')
 export class Area {
@@ -14,4 +24,14 @@ export class Area {
 
   @ManyToOne(() => Departamento, (departamento) => departamento.areas)
   departamento: Departamento;
+
+  @OneToOne(() => Professor)
+  @JoinColumn({ name: 'coordenador_area' })
+  coordenador_area: Professor;
+
+  @OneToMany(() => Professor, (professor) => professor.area)
+  professores: Professor[];
+
+  @OneToMany(() => Disciplina, (disciplina) => disciplina.area)
+  disciplinas: Disciplina[];
 }

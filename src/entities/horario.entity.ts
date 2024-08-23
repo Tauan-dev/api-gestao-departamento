@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Turma } from './turma.entity';
 
 @Entity('horario')
 export class Horario {
@@ -10,4 +11,7 @@ export class Horario {
 
   @Column()
   dia: string;
+
+  @ManyToMany(() => Turma, (turma) => turma.horarios)
+  turmas: Turma[];
 }
