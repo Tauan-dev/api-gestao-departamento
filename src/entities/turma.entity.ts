@@ -25,9 +25,6 @@ export class Turma {
   @Column()
   formando: boolean;
 
-  @Column()
-  horario: string;
-
   @ManyToOne(() => Semestre, (semestre) => semestre.turmas)
   semestre: Semestre;
 
