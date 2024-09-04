@@ -4,14 +4,14 @@ import {
   JoinColumn,
   OneToMany,
   OneToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
 } from 'typeorm';
 import { Professor } from './professor.entity';
 import { Area } from './area.entity';
 
 @Entity('departamento')
 export class Departamento {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: number;
 
   @Column()

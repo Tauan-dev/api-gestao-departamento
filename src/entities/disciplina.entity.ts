@@ -22,13 +22,10 @@ export class Disciplina {
   nome: string;
 
   @Column()
-  periodo: string;
-
-  @Column()
   cargaHoraria: number;
 
   @Column()
-  qt_credito: number;
+  cargaHorariaSemanal: number;
 
   @ManyToOne(() => Area, (area) => area.disciplinas)
   area: Area;
