@@ -21,7 +21,7 @@ export class CreateCursoTable1725476167598 implements MigrationInterface {
           },
           {
             name: 'created_at',
-            type: 'timestramp',
+            type: 'timestamp',
             default: 'CURRENT_TIMESTAMP',
           },
         ],

@@ -22,11 +22,11 @@ export class CreateDisciplinaTable1725477146996 implements MigrationInterface {
           },
           {
             name: 'cargaHoraria',
-            type: 'interger',
+            type: 'integer',
           },
           {
             name: 'qt_credito',
-            type: 'interger',
+            type: 'integer',
           },
           {
             name: 'created_at',

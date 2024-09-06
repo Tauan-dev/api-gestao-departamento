@@ -17,7 +17,7 @@ export class CreateColegiadoTable1725475722321 implements MigrationInterface {
           },
           {
             name: 'img',
-            type: 'string',
+            type: 'varchar',
           },
           {
             name: 'created_at',
