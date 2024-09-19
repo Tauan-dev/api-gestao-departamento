@@ -12,26 +12,28 @@ export class AddTurmaIdToTurmaHorarioTable1726772533660
     await queryRunner.addColumn(
       'turma_horario',
       new TableColumn({
-        name: 'turmaId',
+        name: 'turmaToTurmaHorarioId',
         type: 'integer',
       }),
     );
 
     await queryRunner.createForeignKey(
-      'curso_disciplina',
+      'turma_horario',
       new TableForeignKey({
-        name: 'FK_turma_id',
-        columnNames: ['turmaId'],
+        name: 'FK_turma_turma_horario_id',
+        columnNames: ['turmaToTurmaHorarioId'],
         referencedTableName: 'turma',
         referencedColumnNames: ['id'],
-        onDelete: 'SET NULL',
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('turma_horario', 'FK_turma_id');
+    await queryRunner.dropForeignKey(
+      'turma_horario',
+      'FK_turma_turma_horario_id',
+    );
 
-    await queryRunner.dropColumn('turma_horario', 'turmaId');
+    await queryRunner.dropColumn('turma_horario', 'turmaToTurmaHorarioId');
   }
 }

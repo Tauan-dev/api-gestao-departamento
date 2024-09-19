@@ -12,7 +12,7 @@ export class AddProfessorIdToProfessorTurmaTable1726772910602
     await queryRunner.addColumn(
       'professor_turma',
       new TableColumn({
-        name: 'professorId',
+        name: 'professorToProfessorTurmaId',
         type: 'integer',
       }),
     );
@@ -20,17 +20,22 @@ export class AddProfessorIdToProfessorTurmaTable1726772910602
     await queryRunner.createForeignKey(
       'professor_turma',
       new TableForeignKey({
-        name: 'FK_professor_id',
-        columnNames: ['professorId'],
+        name: 'FK_professor_professor_turma_id',
+        columnNames: ['professorToProfessorTurmaId'],
         referencedTableName: 'professor',
-        referencedColumnNames: ['id'],
-        onDelete: 'SET NULL',
+        referencedColumnNames: ['matricula'],
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('professor_turma', 'FK_professor_id');
-    await queryRunner.dropColumn('professor_turma', 'professorId');
+    await queryRunner.dropForeignKey(
+      'professor_turma',
+      'FK_professor_professor_turma_id',
+    );
+    await queryRunner.dropColumn(
+      'professor_turma',
+      'professorToProfessorTurmaId',
+    );
   }
 }

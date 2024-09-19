@@ -12,7 +12,7 @@ export class AddCursoIdToCursoDisciplinaTable1726770037396
     await queryRunner.addColumn(
       'curso_disciplina',
       new TableColumn({
-        name: 'cursoId',
+        name: 'cursoToCursoDisciplinaId',
         type: 'integer',
       }),
     );
@@ -20,17 +20,22 @@ export class AddCursoIdToCursoDisciplinaTable1726770037396
     await queryRunner.createForeignKey(
       'curso_disciplina',
       new TableForeignKey({
-        name: 'FK_curso_id',
-        columnNames: ['cursoId'],
+        name: 'FK_curso_curso_disciplina_id',
+        columnNames: ['cursoToCursoDisciplinaId'],
         referencedTableName: 'curso',
         referencedColumnNames: ['id'],
-        onDelete: 'SET NULL',
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('curso_disciplina', 'FK_curso_id');
-    await queryRunner.dropColumn('curso_disciplina', 'cursoId');
+    await queryRunner.dropForeignKey(
+      'curso_disciplina',
+      'FK_curso_curso_disciplina_id',
+    );
+    await queryRunner.dropColumn(
+      'curso_disciplina',
+      'cursoToCursoDisciplinaId',
+    );
   }
 }

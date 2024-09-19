@@ -12,7 +12,7 @@ export class AddDeptoIdToProfessorTable1726757495247
     await queryRunner.addColumn(
       'professor',
       new TableColumn({
-        name: 'departamentoId',
+        name: 'departamentoToProfId',
         type: 'integer',
       }),
     );
@@ -20,17 +20,19 @@ export class AddDeptoIdToProfessorTable1726757495247
     await queryRunner.createForeignKey(
       'professor',
       new TableForeignKey({
-        name: 'FK_departamento_id',
-        columnNames: ['departamentoId'],
+        name: 'FK_departamento_professor_id',
+        columnNames: ['departamentoToProfId'],
         referencedTableName: 'departamento',
         referencedColumnNames: ['id'],
-        onDelete: 'SET NULL',
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('professor', 'FK_departamento_id');
-    await queryRunner.dropColumn('professor', 'departamentoId');
+    await queryRunner.dropForeignKey(
+      'professor',
+      'FK_departamento_professor_id',
+    );
+    await queryRunner.dropColumn('professor', 'departamentoToProfId');
   }
 }

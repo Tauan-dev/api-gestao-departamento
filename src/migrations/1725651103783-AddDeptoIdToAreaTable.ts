@@ -18,11 +18,10 @@ export class AddDeptoIdToAreaTable1725651103783 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'area',
       new TableForeignKey({
-        name: 'FK_departamento_ID',
+        name: 'FK_departamento_Id',
         columnNames: ['departamentoId'],
         referencedTableName: 'departamento',
         referencedColumnNames: ['id'],
-        onDelete: 'SET NULL',
       }),
     );
   }

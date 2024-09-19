@@ -20,17 +20,16 @@ export class AddSemestreIdToTurmaTable1726758500033
     await queryRunner.createForeignKey(
       'turma',
       new TableForeignKey({
-        name: 'FK_semestre_id',
+        name: 'FK_semestre_turma_id',
         columnNames: ['semestreId'],
         referencedTableName: 'semestre',
         referencedColumnNames: ['id'],
-        onDelete: 'SET NULL',
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('turma', 'FK_semestre_id');
+    await queryRunner.dropForeignKey('turma', 'FK_semestre_turma_id');
     await queryRunner.dropColumn('turma', 'semestreId');
   }
 }

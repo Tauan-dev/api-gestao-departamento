@@ -13,24 +13,23 @@ export class AddProfessorMatriculaToAreaTable1725651601107
       'area',
       new TableColumn({
         name: 'coordAreaMatricula',
-        type: 'varchar',
+        type: 'integer',
       }),
     );
 
     await queryRunner.createForeignKey(
       'area',
       new TableForeignKey({
-        name: 'FK_professor_matricula',
+        name: 'FK_professor_area_matricula',
         columnNames: ['coordAreaMatricula'],
         referencedTableName: 'professor',
         referencedColumnNames: ['matricula'],
-        onDelete: 'SET NULL',
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('area', 'FK_professor_matricula');
+    await queryRunner.dropForeignKey('area', 'FK_professor_area_matricula');
 
     await queryRunner.dropColumn('area', 'coordAreaMatricula');
   }

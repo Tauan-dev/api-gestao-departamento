@@ -20,17 +20,16 @@ export class AddAreaIdToDisciplinaTable1725656105239
     await queryRunner.createForeignKey(
       'disciplina',
       new TableForeignKey({
-        name: 'FK_area_id',
+        name: 'FK_area_disciplina_id',
         columnNames: ['areaId'],
         referencedTableName: 'area',
         referencedColumnNames: ['id'],
-        onDelete: 'SET NULL',
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('disciplina', 'FK_area_id');
+    await queryRunner.dropForeignKey('disciplina', 'FK_area_disciplina_id');
 
     await queryRunner.dropColumn('disciplina', 'areaId');
   }

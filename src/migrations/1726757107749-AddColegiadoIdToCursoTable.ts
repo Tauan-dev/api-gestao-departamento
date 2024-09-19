@@ -20,17 +20,16 @@ export class AddColegiadoIdToCursoTable1726757107749
     await queryRunner.createForeignKey(
       'curso',
       new TableForeignKey({
-        name: 'FK_colegiado_id',
+        name: 'FK_colegiado_curso_id',
         columnNames: ['colegiadoId'],
         referencedTableName: 'colegiado',
         referencedColumnNames: ['id'],
-        onDelete: 'SETNULL',
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('curso', 'FK_colegiado_id');
+    await queryRunner.dropForeignKey('curso', 'FK_colegiado_curso_id');
     await queryRunner.dropColumn('curso', 'colegiadoId');
   }
 }
