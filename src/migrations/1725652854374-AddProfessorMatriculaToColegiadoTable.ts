@@ -14,6 +14,7 @@ export class AddProfessorMatriculaToColegiadoTable1725652854374
       new TableColumn({
         name: 'coordColegiadoMatricula',
         type: 'integer',
+        isNullable: true,
       }),
     );
 
@@ -24,6 +25,7 @@ export class AddProfessorMatriculaToColegiadoTable1725652854374
         columnNames: ['coordColegiadoMatricula'],
         referencedTableName: 'professor',
         referencedColumnNames: ['matricula'],
+        onDelete: 'SET NULL',
       }),
     );
   }

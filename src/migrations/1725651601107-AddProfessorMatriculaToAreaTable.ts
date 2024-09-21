@@ -14,6 +14,7 @@ export class AddProfessorMatriculaToAreaTable1725651601107
       new TableColumn({
         name: 'coordAreaMatricula',
         type: 'integer',
+        isNullable: true,
       }),
     );
 
@@ -24,6 +25,7 @@ export class AddProfessorMatriculaToAreaTable1725651601107
         columnNames: ['coordAreaMatricula'],
         referencedTableName: 'professor',
         referencedColumnNames: ['matricula'],
+        onDelete: 'SET NULL',
       }),
     );
   }
