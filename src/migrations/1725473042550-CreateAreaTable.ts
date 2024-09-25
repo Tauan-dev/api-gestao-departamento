@@ -16,7 +16,7 @@ export class CreateAreaTable1725473042550 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: ' created-at',
+            name: ' created_at',
             type: 'timestamp',
             default: 'CURRENT_TIMESTAMP',
           },

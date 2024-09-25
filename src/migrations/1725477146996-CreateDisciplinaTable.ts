@@ -11,6 +11,7 @@ export class CreateDisciplinaTable1725477146996 implements MigrationInterface {
             type: ' integer',
             isPrimary: true,
             isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'cod',
@@ -25,7 +26,7 @@ export class CreateDisciplinaTable1725477146996 implements MigrationInterface {
             type: 'integer',
           },
           {
-            name: 'qt_credito',
+            name: 'cargaHorariaSemanal',
             type: 'integer',
           },
           {
