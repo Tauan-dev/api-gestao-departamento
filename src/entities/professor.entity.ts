@@ -4,7 +4,7 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Departamento } from './departamento.entity';
 import { Area } from './area.entity';
@@ -12,7 +12,7 @@ import { Turma } from './turma.entity';
 
 @Entity('professor')
 export class Professor {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   matricula: number;
 
   @Column()

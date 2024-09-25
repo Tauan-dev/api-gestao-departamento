@@ -10,6 +10,8 @@ export class CreateProfessorTable1725478939900 implements MigrationInterface {
             name: 'matricula',
             type: 'integer',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'nome',
