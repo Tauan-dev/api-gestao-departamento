@@ -12,6 +12,7 @@ export class CreateTurmaHorarioTable1726772367674
             name: 'id',
             type: 'integer',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment',
           },
           {

@@ -12,6 +12,7 @@ export class CreateCursoDisciplinaTable1726769425989
             name: 'id',
             type: 'integer',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment',
           },
           {

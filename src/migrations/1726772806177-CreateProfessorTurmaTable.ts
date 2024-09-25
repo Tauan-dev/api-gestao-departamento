@@ -12,6 +12,7 @@ export class CreateProfessorTurmaTable1726772806177
             name: 'id',
             type: 'integer',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment',
           },
           {
