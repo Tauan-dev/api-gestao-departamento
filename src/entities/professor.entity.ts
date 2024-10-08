@@ -30,7 +30,17 @@ export class Professor {
   @ManyToOne(() => Area, (area) => area.professores)
   area: Area;
 
-  @JoinTable()
   @ManyToMany(() => Turma, (turma) => turma.professores)
-  turmas: Turma;
+  @JoinTable({
+    name: 'professor_turma',
+    joinColumn: {
+      name: 'professorToProfessorTurmaId',
+      referencedColumnName: 'matricula',
+    },
+    inverseJoinColumn: {
+      name: 'turmaToProfessorTurmaId',
+      referencedColumnName: 'id',
+    },
+  })
+  turmas: Turma[];
 }

@@ -9,4 +9,7 @@ export class CreateCurso {
 
   @IsString()
   readonly tipo: string;
+
+  @IsNumber()
+  readonly colegiadoId: number;
 }

@@ -15,4 +15,7 @@ export class CreateDisciplinas {
 
   @IsNumber()
   readonly cargaHorariaSemanal: number;
+
+  @IsNumber()
+  readonly areaId: number;
 }

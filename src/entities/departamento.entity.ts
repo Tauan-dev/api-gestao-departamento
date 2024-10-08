@@ -27,8 +27,8 @@ export class Departamento {
   professores: Professor[];
 
   @OneToOne(() => Professor)
-  @JoinColumn({ name: 'diretor_departamento' })
-  diretor_departamento: Professor;
+  @JoinColumn({ name: 'coordDepartamentoMatricula' })
+  coordDepartamentoMatricula: Professor;
 
   @OneToMany(() => Area, (area) => area.departamento)
   areas: Area[];

@@ -12,4 +12,10 @@ export class CreateTurma {
 
   @IsBoolean()
   readonly formando: boolean;
+
+  @IsNumber()
+  readonly disciplinaToTurmaId: number;
+
+  @IsNumber()
+  readonly semestreId: number;
 }

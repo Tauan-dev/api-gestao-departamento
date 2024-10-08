@@ -1,4 +1,11 @@
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryColumn,
+} from 'typeorm';
 import { Professor } from './professor.entity';
 import { Curso } from './curso.entity';
 
@@ -11,12 +18,15 @@ export class Colegiado {
   nome: string;
 
   @Column()
+  sigla: string;
+
+  @Column()
   img: string;
 
   @OneToOne(() => Professor)
-  @JoinColumn({ name: 'coordenador_colegiado' })
-  coordenador_colegiado: Professor;
+  @JoinColumn({ name: 'coordColegiadoMatricula' })
+  coordColegiadoMatricula: Professor;
 
-  @OneToMany(()=>Curso, (curso)=> curso.colegiado)
-  cursos:Curso[];
+  @OneToMany(() => Curso, (curso) => curso.colegiado)
+  cursos: Curso[];
 }

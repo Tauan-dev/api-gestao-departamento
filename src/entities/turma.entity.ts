@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
   ManyToOne,
@@ -26,13 +27,25 @@ export class Turma {
   formando: boolean;
 
   @ManyToOne(() => Semestre, (semestre) => semestre.turmas)
+  @JoinColumn({ name: 'semestreId' })
   semestre: Semestre;
 
   @ManyToOne(() => Disciplina, (disciplina) => disciplina.turmas)
+  @JoinColumn({ name: 'disciplinaToTurmaId' })
   disciplina: Disciplina;
 
-  @JoinTable()
   @ManyToMany(() => Horario, (horario) => horario.turmas)
+  @JoinTable({
+    name: 'turma_horario',
+    joinColumn: {
+      name: 'turmaToTurmaHorarioId',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'horarioToTurmaHorarioId',
+      referencedColumnName: 'id',
+    },
+  })
   horarios: Horario[];
 
   @ManyToMany(() => Professor, (professor) => professor.turmas)

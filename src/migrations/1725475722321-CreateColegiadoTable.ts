@@ -16,6 +16,10 @@ export class CreateColegiadoTable1725475722321 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'sigla',
+            type: 'varchar',
+          },
+          {
             name: 'img',
             type: 'varchar',
           },

@@ -12,4 +12,10 @@ export class CreateProfessor {
 
   @IsString()
   readonly img: string;
+
+  @IsNumber()
+  readonly areaId: number;
+
+  @IsNumber()
+  readonly departamentoToProfId: number;
 }

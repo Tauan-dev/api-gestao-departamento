@@ -11,6 +11,7 @@ export class CreateSemestreTable1725482493400 implements MigrationInterface {
             type: 'integer',
             isPrimary: true,
             isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'semestre',

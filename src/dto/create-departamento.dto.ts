@@ -12,4 +12,7 @@ export class CreateDepartamento {
 
   @IsString()
   readonly img: string;
+
+  @IsNumber()
+  readonly coordDepartamentoMatricula: number;
 }

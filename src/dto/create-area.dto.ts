@@ -9,4 +9,10 @@ export class CreateArea {
 
   @IsString()
   readonly img: string;
+
+  @IsNumber()
+  readonly departamentoId: number;
+
+  @IsNumber()
+  readonly coordAreaMatriculaId: number;
 }

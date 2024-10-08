@@ -11,6 +11,7 @@ export class CreateTurmaTable1725482675430 implements MigrationInterface {
             type: 'integer',
             isPrimary: true,
             isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'cod',

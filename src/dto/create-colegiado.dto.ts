@@ -8,5 +8,11 @@ export class CreateColegiado {
   readonly name: string;
 
   @IsString()
+  readonly sigla: string;
+
+  @IsString()
   readonly img: string;
+
+  @IsNumber()
+  readonly coordColegiadoMatricula: number;
 }
