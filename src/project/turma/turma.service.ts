@@ -49,4 +49,13 @@ export class TurmaService {
 
     return await this.turmaRepository.save(turma);
   }
+
+  async findAllsSemestre() {
+    return await this.semestreRepository.find();
+  }
+
+  async findOneSemestre(id: number) {
+    const semestre = await this.semestreRepository.findOne({ where: { id } });
+    return semestre;
+  }
 }
