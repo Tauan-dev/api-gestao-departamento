@@ -23,7 +23,6 @@ export class TurmaService {
   async createTurma(createTurma: CreateTurma): Promise<Turma> {
     console.log(createTurma);
     const turma = this.turmaRepository.create({
-      id: createTurma.id,
       cod: createTurma.cod,
       observacao: createTurma.observacao,
       formando: createTurma.formando,

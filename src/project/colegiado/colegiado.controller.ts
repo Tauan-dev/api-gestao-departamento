@@ -11,6 +11,11 @@ export class ColegiadoController {
     return this.colegiadoService.findAll(); // Método que retorna todos os colegiados
   }
 
+  @Get('curso/:id')
+  findOne(@Param('id') id: number) {
+     return this.colegiadoService.findOne(id);
+   }
+
   @Get(':colegiadoId')
   findDisciplinaByCurso(@Param('colegiadoId') colegiadoId: number) {
     return this.colegiadoService.findDisciplinaByCurso(colegiadoId);

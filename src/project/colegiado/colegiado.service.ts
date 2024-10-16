@@ -36,6 +36,11 @@ export class ColegiadoService {
     return await this.colegiadoRepository.find();
   }
 
+  async findOne(id: number) {
+    const colegiado = await this.colegiadoRepository.findOne({ where: { id } });
+    return colegiado;
+  }
+
   async findDisciplinaByCurso(colegiadoId: number) {
     const cursos = await this.cursoRepository.find({
       where: { colegiado: { id: colegiadoId } }, // utilizado para filtrar os cursos pelo colegiado
