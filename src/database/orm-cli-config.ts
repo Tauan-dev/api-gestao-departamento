@@ -28,6 +28,7 @@ import { AddHorarioIdToTurmaHorarioTable1726772677740 } from 'src/migrations/172
 import { CreateProfessorTurmaTable1726772806177 } from 'src/migrations/1726772806177-CreateProfessorTurmaTable';
 import { AddProfessorIdToProfessorTurmaTable1726772910602 } from 'src/migrations/1726772910602-AddProfessorIdToProfessorTurmaTable';
 import { AddTurmaIdToProfessorTurmaTable1726773129721 } from 'src/migrations/1726773129721-AddTurmaIdToProfessorTurmaTable';
+import { AddUniqueToTurma1729216726466 } from 'src/migrations/1729216726466-AddUniqueToTurma';
 
 export const dataSource = new DataSource({
   ...dataSourceOptions,
@@ -61,5 +62,6 @@ export const dataSource = new DataSource({
     CreateProfessorTurmaTable1726772806177,
     AddProfessorIdToProfessorTurmaTable1726772910602,
     AddTurmaIdToProfessorTurmaTable1726773129721,
+    AddUniqueToTurma1729216726466,
   ],
 });

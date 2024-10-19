@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
   ManyToOne,
@@ -25,6 +26,7 @@ export class Professor {
   img: string;
 
   @ManyToOne(() => Departamento, (departamento) => departamento.professores)
+  @JoinColumn({ name: 'departamentoToProfId' })
   departamento: Departamento;
 
   @ManyToOne(() => Area, (area) => area.professores)

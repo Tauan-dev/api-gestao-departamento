@@ -23,7 +23,7 @@ export class Turma {
   @Column()
   observacao: string;
 
-  @Column()
+  @Column({ default: false })
   formando: boolean;
 
   @ManyToOne(() => Semestre, (semestre) => semestre.turmas)

@@ -15,7 +15,7 @@ export class CreateSemestreTable1725482493400 implements MigrationInterface {
           },
           {
             name: 'semestre',
-            type: 'varchar',
+            type: 'number',
           },
           {
             name: 'created_at',

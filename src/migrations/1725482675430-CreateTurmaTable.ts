@@ -24,6 +24,7 @@ export class CreateTurmaTable1725482675430 implements MigrationInterface {
           {
             name: 'formando',
             type: 'boolean',
+            default: false,
           },
           {
             name: 'created_at',

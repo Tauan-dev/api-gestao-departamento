@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CreateSemestre } from 'src/dto/create-semestre.dto';
 import { Colegiado } from 'src/entities/colegiado.entity';
 import { Curso } from 'src/entities/curso.entity';
 import { Disciplina } from 'src/entities/disciplina.entity';
@@ -47,5 +48,44 @@ export class ColegiadoService {
       relations: ['disciplinas'], // nas relations você coloca somente os dados que deseja retorno
     });
     return cursos;
+  }
+
+  async findTurmasByColegiado(colegiadoId: number) {
+    return await this.turmaRepository.find({
+      where: {
+        disciplina: {
+          cursos: { id: colegiadoId },
+        },
+      },
+      relations: ['disciplina', 'disciplina.cursos'],
+    });
+  }
+
+  async findAllSemestre() {
+    return await this.semestreRepository.find();
+  }
+
+  async findOneSemestre(id: number) {
+    const semestre = await this.semestreRepository.findOne({ where: { id } });
+    return semestre;
+  }
+
+  async findSemestreAtual(): Promise<Semestre> {
+    const semestres = await this.semestreRepository.find({
+      order: { semestre: 'DESC' }, // Ordena decrescentemente com base no valor do semestre
+    });
+
+    if (semestres.length === 0) {
+      throw new Error('Nenhum semestre encontrado');
+    }
+
+    return semestres[0]; // Retorna o semestre mais recente
+  }
+
+  async createSemestre(createSemestre: CreateSemestre): Promise<Semestre> {
+    const semestre = this.semestreRepository.create({
+      semestre: createSemestre.semestre,
+    }); // Cria uma instância do semestre
+    return await this.semestreRepository.save(semestre); // Salva no banco de dados
   }
 }

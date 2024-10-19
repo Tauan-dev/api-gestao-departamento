@@ -5,6 +5,7 @@ import {
   OneToMany,
   ManyToMany,
   PrimaryGeneratedColumn,
+  JoinColumn,
 } from 'typeorm';
 import { Area } from './area.entity';
 import { Turma } from './turma.entity';
@@ -28,6 +29,7 @@ export class Disciplina {
   cargaHorariaSemanal: number;
 
   @ManyToOne(() => Area, (area) => area.disciplinas)
+  @JoinColumn({ name: 'areaId' })
   area: Area;
 
   @OneToMany(() => Turma, (turma) => turma.disciplina)

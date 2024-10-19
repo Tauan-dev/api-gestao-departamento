@@ -5,6 +5,5 @@ export class CreateSemestre {
   readonly id: number;
 
   @IsString()
-  readonly semestre: string;
-  
+  readonly semestre: number;
 }
