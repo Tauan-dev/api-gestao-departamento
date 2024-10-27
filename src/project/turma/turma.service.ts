@@ -33,6 +33,10 @@ export class TurmaService {
     return await this.turmaRepository.save(turma);
   }
 
+  async findHorario() {
+    return this.horarioRepository.find();
+  }
+
   // trabalhar com uma tabela de associação, ou seja n:n é necessário relations
   async alocarHorariosTurma(
     turmaId: number,

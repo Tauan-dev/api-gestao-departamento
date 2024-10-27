@@ -25,7 +25,12 @@ export class AreaService {
           area: { id: areaIds },
         },
       },
-      relations: ['disciplina', 'disciplina.cursos'],
+      relations: [
+        'disciplina',
+        'disciplina.cursos',
+        'horarios',
+        'disciplina.area',
+      ],
     });
   }
 

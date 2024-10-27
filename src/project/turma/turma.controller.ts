@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { TurmaService } from './turma.service';
 import { CreateTurma } from 'src/dto/create-turma.dto';
 
@@ -9,6 +9,11 @@ export class TurmaController {
   @Post()
   async createTurma(@Body() createTurma: CreateTurma) {
     return this.turmaService.createTurma(createTurma);
+  }
+
+  @Get('todoshorarios')
+  async findHorario() {
+    return this.turmaService.findHorario();
   }
 
   @Post('horario')
