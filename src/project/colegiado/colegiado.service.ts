@@ -61,6 +61,22 @@ export class ColegiadoService {
     });
   }
 
+  async findTurmasComProfessoresByColegiado(colegiadoId: number) {
+    return await this.turmaRepository.find({
+      where: {
+        disciplina: {
+          cursos: { id: colegiadoId },
+        },
+      },
+      relations: [
+        'disciplina',
+        'disciplina.cursos',
+        'horarios',
+        'professores', // Inclui a relação com os professores alocados na turma
+      ],
+    });
+  }
+
   async findAllSemestre() {
     return await this.semestreRepository.find();
   }

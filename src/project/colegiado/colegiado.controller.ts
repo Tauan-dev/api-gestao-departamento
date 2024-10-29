@@ -46,4 +46,13 @@ export class ColegiadoController {
   findDisciplinaByCurso(@Param('colegiadoId') colegiadoId: number) {
     return this.colegiadoService.findDisciplinaByCurso(colegiadoId);
   }
+
+  @Get(':colegiadoId/turmas-professores')
+  async findTurmasComProfessoresByColegiado(
+    @Param('colegiadoId') colegiadoId: number,
+  ) {
+    return await this.colegiadoService.findTurmasComProfessoresByColegiado(
+      colegiadoId,
+    );
+  }
 }
