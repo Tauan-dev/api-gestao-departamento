@@ -10,6 +10,11 @@ export class AreaController {
     return this.areaService.findTurmasByArea(areaIds);
   }
 
+  @Get()
+  findAllAreas() {
+    return this.areaService.findAllAreas();
+  }
+
   @Get('professor/:areaId')
   findProfessorByArea(@Param('areaId') areaId: number) {
     return this.areaService.findProfessorByArea(areaId);

@@ -34,6 +34,10 @@ export class AreaService {
     });
   }
 
+  async findAllAreas() {
+    return await this.areaRepository.find();
+  }
+
   async findProfessorByArea(areaId: number) {
     return await this.professorRepository.find({
       where: {
