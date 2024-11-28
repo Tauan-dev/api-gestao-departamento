@@ -38,7 +38,7 @@ export class ColegiadoController {
   }
 
   @Get('turma/:colegiadoId')
-  findTurmasByCoelgiado(@Param('colegiadoId') colegiadoId: number) {
+  findTurmasByColegiado(@Param('colegiadoId') colegiadoId: number) {
     return this.colegiadoService.findTurmasByColegiado(colegiadoId);
   }
 

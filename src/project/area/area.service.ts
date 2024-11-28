@@ -4,6 +4,7 @@ import { Area } from 'src/entities/area.entity';
 import { Professor } from 'src/entities/professor.entity';
 import { Turma } from 'src/entities/turma.entity';
 import { Repository } from 'typeorm';
+import { ColegiadoService } from '../colegiado/colegiado.service';
 
 @Injectable()
 export class AreaService {
@@ -16,13 +17,20 @@ export class AreaService {
 
     @InjectRepository(Turma)
     private readonly turmaRepository: Repository<Turma>,
+
+    private readonly colegiadoService: ColegiadoService,
   ) {}
 
-  async findTurmasByArea(areaIds: number) {
+  async findTurmasByArea(areaIds: number): Promise<Turma[]> {
+    // Primeiro, encontramos o semestre mais atual
+    const semestreAtual = await this.colegiadoService.findSemestreAtual();
+
+    // Agora, buscamos as turmas associadas à área e ao semestre atual
     return await this.turmaRepository.find({
       where: {
+        semestre: { id: semestreAtual.id }, // Filtra pelo semestre mais atual
         disciplina: {
-          area: { id: areaIds },
+          area: { id: areaIds }, // Filtra pela área
         },
       },
       relations: [
@@ -30,6 +38,7 @@ export class AreaService {
         'disciplina.cursos',
         'horarios',
         'disciplina.area',
+        'semestre', // Relaciona o semestre para garantir que o filtro funcione corretamente
       ],
     });
   }

@@ -7,10 +7,12 @@ import { Professor } from 'src/entities/professor.entity';
 import { Turma } from 'src/entities/turma.entity';
 import { AreaController } from './area.controller';
 import { AreaService } from './area.service';
+import { ColegiadoModule } from '../colegiado/colegiado.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Area, Professor, Turma, Disciplina, Curso]),
+    ColegiadoModule,
   ],
   controllers: [AreaController],
   providers: [AreaService],

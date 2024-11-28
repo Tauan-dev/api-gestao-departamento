@@ -50,29 +50,39 @@ export class ColegiadoService {
     return cursos;
   }
 
-  async findTurmasByColegiado(colegiadoId: number) {
+  async findTurmasByColegiado(colegiadoId: number): Promise<Turma[]> {
+    // Primeiro, encontramos o semestre mais atual
+    const semestreAtual = await this.findSemestreAtual();
+
+    // Agora, buscamos as turmas associadas ao colegiado e ao semestre mais atual
     return await this.turmaRepository.find({
       where: {
+        semestre: { id: semestreAtual.id }, // Filtra pelo semestre mais atual
         disciplina: {
-          cursos: { id: colegiadoId },
+          cursos: { id: colegiadoId }, // Filtra pelo colegiado
         },
       },
-      relations: ['disciplina', 'disciplina.cursos'],
+      relations: ['disciplina', 'disciplina.cursos', 'semestre'], // Relaciona as entidades necessárias
     });
   }
 
   async findTurmasComProfessoresByColegiado(colegiadoId: number) {
+    // Encontra o semestre atual
+    const semestreAtual = await this.findSemestreAtual();
+
+    // Agora faz a consulta de turmas, filtrando pelo semestre atual
     return await this.turmaRepository.find({
       where: {
         disciplina: {
           cursos: { id: colegiadoId },
         },
+        semestre: semestreAtual, // Filtra pela turma do semestre atual
       },
       relations: [
-        'disciplina',
-        'disciplina.cursos',
-        'horarios',
-        'professores', // Inclui a relação com os professores alocados na turma
+        'disciplina', // Carrega a disciplina
+        'disciplina.cursos', // Carrega os cursos associados à disciplina
+        'horarios', // Carrega os horários das turmas
+        'professores', // Carrega os professores associados à turma
       ],
     });
   }
